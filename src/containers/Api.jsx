@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // check
-import {geolocated} from 'react-geolocated'; 
+
 
 // http://openweathermap.org/current
 
@@ -16,7 +16,7 @@ constructor(){
     this.state = {
         weather: []
     };
-    
+ 
 }
 
 
@@ -39,6 +39,7 @@ componentDidMount() {
         return (
             <div>
                 {this.state.weather}
+                
             </div>
         );
     }
