@@ -1,33 +1,43 @@
-import React from 'react';
-import Geolocation from "react-geolocation";
-import { connect } from 'react-redux';
+// // https://no23reason.github.io/react-geolocated/#/
+
+import React, { Component } from 'react';
+let latitude = 0;
+let longitude = 0;
 
 
-// https://no23reason.github.io/react-geolocated/#/
+class Geolocation extends Component {
+  constructor(){
+    super();
+    this.state = {
+      latitude: 0,
+      longitude: 0
+    }
+  }
+      
+    
 
 
+  componentWillMount(){
 
-export default () => {
-  return (
-    <Geolocation
-      onSuccess={console.log}
-      render={({
-        fetchingPosition,
-        position: { coords: { latitude, longitude } = {} } = {},
-        error,
-        getCurrentPosition
-      }) =>
-        <div>
-          <button onClick={getCurrentPosition}>Get Position</button>
-          {error &&
-            <div>
-              {error.message}
-            </div>}
-          <pre>
-            latitude: {latitude} 
-            longitude: {longitude}
-          </pre>
-        </div>}
-    />
-  );
-};
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      this.setState({latitude: position.coords.latitude});
+      this.setState({longitude: position.coords.longitude});
+    });
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+
+  }
+render() {
+    return (
+      <div>
+        {this.state.latitude}
+        <br/>
+        {this.state.longitude}
+      </div>
+    );
+  }
+}
+
+export default Geolocation;
