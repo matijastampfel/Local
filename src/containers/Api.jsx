@@ -7,8 +7,6 @@ import axios from 'axios';
 
 let link = "http://api.openweathermap.org/data/2.5/weather?lat=58&lon=11&APPID=bc92738f17d1ab89d07b75ca077124c7"
 
-
-
 class Api extends Component {
 constructor(){
     super();
@@ -17,8 +15,6 @@ constructor(){
     };
  
 }
-
-
 
 componentDidMount() {
         
@@ -30,9 +26,6 @@ componentDidMount() {
         console.log(weather);
       })
   }
-
-
-
 
     render() {
         return (
